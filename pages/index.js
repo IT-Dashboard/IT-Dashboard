@@ -14,7 +14,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          This dashboard is designed to facilitate all IT needs.
         </p>
 
         <div className="grid">
