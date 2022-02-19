@@ -8,3 +8,5 @@ Welcome to the GTRI IT Dashboard project!
 -   Run `npm i` in the project directory to install [Next.js](https://nextjs.org/) and other project dependencies
 -   Once installed, `npm run dev` will start up a local server with hot reload enabled, available at: http://localhost:3000/
 -   Code pushed to the `main` branch will be auto-deployed to https://gtri-it-dashboard.herokuapp.com/
+
+Built by the capstone dream team: Jacob Hooker, Kyle Hoganson, Robert Raheja, Sam Kharel, Sky Kim
