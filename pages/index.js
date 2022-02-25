@@ -10,7 +10,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to GTRI IT Dashboard
+          Welcome to *insert name* IT Dashboard
         </h1>
 
         <p className="description">
