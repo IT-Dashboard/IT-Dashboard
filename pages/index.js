@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>GTRI IT Dashboard</title>
+        <title>IT Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
