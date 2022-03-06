@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Head from "next/head";
 
 export default function Home() {
   return (
@@ -9,9 +9,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to *insert name* IT Dashboard
-        </h1>
+        <h1 className="title">Welcome to *insert name* IT Dashboard</h1>
 
         <p className="description">
           This dashboard is designed to facilitate all IT needs.
@@ -48,9 +46,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer>
-        Created by the Capstone Dream Team
-      </footer>
+      <footer>Created by the Capstone Dream Team</footer>
 
       <style jsx>{`
         .container {
@@ -198,5 +194,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
