@@ -22,6 +22,8 @@ const App = () => {
 
 		const newFormData = {...addFormData};
 		newFormData[fieldName] = fieldValue;
+
+		setAddFormData(newFormData);
 	};
 
 	const handleAddFormSubmit = (event) => {
