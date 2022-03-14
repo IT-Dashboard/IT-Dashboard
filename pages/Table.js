@@ -66,6 +66,8 @@ const App = () => {
 				))}
 			</tbody>
 		</table>
+					{users.map((user, index) => (
+						<tr key={index}>
 
 		<h2>Add a User</h2>
 		<form onSubmit={handleAddFormSubmit}>
