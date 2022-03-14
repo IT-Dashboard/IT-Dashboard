@@ -55,8 +55,8 @@ const App = () => {
 				</tr>
 			</thead>
 			<tbody>
-			{users.map((user)=>(
-				<tr>
+			{users.map((user, index) => (
+				<tr key={index}>
 					<td>{user.firstName}</td>
 					<td>{user.lastName}</td>
 					<td>{user.address}</td>
@@ -66,8 +66,6 @@ const App = () => {
 				))}
 			</tbody>
 		</table>
-					{users.map((user, index) => (
-						<tr key={index}>
 
 		<h2>Add a User</h2>
 		<form onSubmit={handleAddFormSubmit}>
