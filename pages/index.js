@@ -1,17 +1,16 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>GTRI IT Dashboard</title>
+        <title>IT Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to GTRI IT Dashboard
-        </h1>
+        <h1 className="title">Welcome to *insert name* IT Dashboard</h1>
 
         <p className="description">
           This dashboard is designed to facilitate all IT needs.
@@ -23,10 +22,12 @@ export default function Home() {
             <p>Find in-depth information about Next.js features and API.</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <Link href="/Table">
+            <a className="card">
+              <h3>Users &rarr;</h3>
+              <p>See Users on the Dashboard</p>
+            </a>
+          </Link>
 
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"
@@ -36,21 +37,16 @@ export default function Home() {
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Link href="/example1">
+            <a className="card">
+              <h3>View Example &rarr;</h3>
+              <p>Example page number one in the IT Dashboard</p>
+            </a>
+          </Link>
         </div>
       </main>
 
-      <footer>
-        Created by the Capstone Dream Team
-      </footer>
+      <footer>Created by the Capstone Dream Team</footer>
 
       <style jsx>{`
         .container {
@@ -198,5 +194,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
