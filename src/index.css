@@ -1,0 +1,87 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+#demo-simple-select {
+  overflow: hidden;
+  padding: .5rem .3rem !important;
+}
+
+#demo-simple-select-label {
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+}
+*{
+  font-family: 'Inter', sans-serif!important;
+}
+a{
+  text-decoration: none!important;
+}
+.tc{
+  color: #065bfa;
+}
+.hvr{
+  background: rgba(27, 141, 255, 0.1)
+}
+.pr{
+  color: #fff;
+  border: 1px solid #0D5FC9;
+}
+p {
+  margin-bottom: 0 !important;
+}
+h2,h1,h3,h4,h5,h6 {
+  margin-bottom: 0 !important;
+}
+
+.an{
+  animation-name: example;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite
+}
+@keyframes example {
+  0%   {padding-left: 0px;}
+  50%  {padding-left: 10px;}
+  100% {padding-left: 0px;}
+}
+/* .progress-bar{
+  background-color: #0D5FC9!important;
+ 
+} */
+.progress1 .progress-bar{
+  background-color: #a32dda!important;
+}
+.progress2 .progress-bar{
+  background-color: #23d30c!important;
+}
+.progress3 .progress-bar{
+  background-color: #e42012!important;
+}
+.progress4 .progress-bar{
+  background-color: #fdaa0f!important;
+}
+.progress6 .progress-bar{
+  background-color: #fd0fdd!important;
+}
+.progress{
+  height: 8px!important;
+}
+.rbc-btn-group{
+  display: flex!important;
+  align-items: center!important;
+  gap: 5px!important;
+}
+.rbc-btn-group button {
+  background: #0D5FC9!important;
+  color: white!important;
+  border: none!important;
+}
+.rbc-btn-group button:hover {
+  background: #0D5FC9!important;
+
+}
+.rbc-event{
+  background: #0D5FC9!important;
+}
