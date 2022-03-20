@@ -1,22 +1,13 @@
 import React, { useState } from "react";
-
-import { MdDeviceHub } from "react-icons/md";
-import { MdManageAccounts } from "react-icons/md";
-import { BiChat } from "react-icons/bi";
-import { VscProject } from "react-icons/vsc";
-
-import { SiStatuspal } from "react-icons/si";
 import { BiGlobe } from "react-icons/bi";
 import { FiHome, FiBarChart2, FiTool, FiSettings } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
-import { IoIosArrowRoundForward, IoIosArrowDown } from "react-icons/io";
-import {
-  MdOutlineAdminPanelSettings,
-  MdOutlineArrowBackIos,
-} from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
-import { NavLink } from "react-router-dom";
-const Sidebar = ({ setShowsidebar }) => {
+import Link from "next/link";
+
+const Sidebar = () => {
   const [contractshow, setContractshow] = useState(false);
   const [transhow, setTranshow] = useState(false);
   const [setting, setSetting] = useState(false);
@@ -33,29 +24,18 @@ const Sidebar = ({ setShowsidebar }) => {
       </div>
       <div className="w-full  py-4 flex-col items-center gap-1">
         <div className="w-full  flex items-center justify-center">
-          <NavLink
-            exact
-            activeClassName="hvr tc w-full"
-            className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-            to="/"
-            onClick={() => setShowsidebar(false)}
-          >
-            {" "}
-            <FiHome className="w-5 h-5" /> Dashboard
-          </NavLink>
+          <Link href="/">
+            <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+              <FiHome className="w-5 h-5" /> Dashboard
+            </a>
+          </Link>
         </div>
-        `
         <div className="w-full  flex items-center justify-center">
-          <NavLink
-            exact
-            activeClassName="hvr tc w-full"
-            className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-            to="/device"
-            onClick={() => setShowsidebar(false)}
-          >
-            {" "}
-            <FiBarChart2 className="w-5 h-5" /> Stats
-          </NavLink>
+          <Link href="/device">
+            <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+              <FiBarChart2 className="w-5 h-5" /> Stats
+            </a>
+          </Link>
         </div>
         <div className="w-full  flex items-center justify-center">
           <div
@@ -75,28 +55,18 @@ const Sidebar = ({ setShowsidebar }) => {
         {contractshow && (
           <div className="w-full flex items-center flex-col text-sm">
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                onClick={() => setShowsidebar(false)}
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/users"
-              >
-                {" "}
-                Users
-              </NavLink>
+              <Link href="/users">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  Users
+                </a>
+              </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                onClick={() => setShowsidebar(false)}
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/departments"
-              >
-                {" "}
-                Departments
-              </NavLink>
+              <Link href="/departments">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  Departments
+                </a>
+              </Link>
             </div>
           </div>
         )}
@@ -118,64 +88,32 @@ const Sidebar = ({ setShowsidebar }) => {
         {transhow && (
           <div className="w-full flex items-center flex-col text-sm">
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/issues"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                Issues
-              </NavLink>
+              <Link href="/issues">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  Issues
+                </a>
+              </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/knowledgebase"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                Knowledgebase
-              </NavLink>
+              <Link href="/knowledgebase">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  Knowledgebase
+                </a>
+              </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/timesheets"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                Timesheets
-              </NavLink>
+              <Link href="/timesheets">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  Timesheets
+                </a>
+              </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/it-services"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                IT Services
-              </NavLink>
-            </div>
-            <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/additonal-tools"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                [Additional Tools...]
-              </NavLink>
+              <Link href="/it-services">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  IT Services
+                </a>
+              </Link>
             </div>
           </div>
         )}
@@ -197,28 +135,18 @@ const Sidebar = ({ setShowsidebar }) => {
         {setting && (
           <div className="w-full flex items-center flex-col text-sm">
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/userprofile"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                User Profile
-              </NavLink>
+              <Link href="/user/profile">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  User Profile
+                </a>
+              </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <NavLink
-                exact
-                activeClassName="hvr tc w-full"
-                className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
-                to="/organization"
-                onClick={() => setShowsidebar(false)}
-              >
-                {" "}
-                Organization
-              </NavLink>
+              <Link href="/organization">
+                <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
+                  Organization
+                </a>
+              </Link>
             </div>
           </div>
         )}

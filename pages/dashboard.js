@@ -1,18 +1,18 @@
 import Dashboard from "../components/Dashboard";
 import Topbar from "../components/Topbar";
 import React, { useState } from "react";
-// import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar";
 
 import Head from "next/head";
 
 export default function Page() {
   const [showsidebar, setShowsidebar] = useState(true);
   return (
-    <div className="container min-h-screen">
+    <div className="min-h-screen">
       <Head>
         <title>Main Dashboard | IT Dashboard</title>
       </Head>
-      {/* {showsidebar && <Sidebar setShowsidebar={setShowsidebar} />} */}
+      {showsidebar && <Sidebar setShowsidebar={setShowsidebar} />}
       <div>
         <Topbar showsidebar={showsidebar} setShowsidebar={setShowsidebar} />
       </div>
