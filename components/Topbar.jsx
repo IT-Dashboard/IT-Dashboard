@@ -2,12 +2,15 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon } from "@heroicons/react/outline";
-import { NavLink } from "react-router-dom";
+
 import { BiSearch, BiGridAlt, BiChat } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import { MdManageAccounts } from "react-icons/md";
 import { AiOutlineLogout } from "react-icons/ai";
-import { Link } from "react-router-dom";
+
+import Link from "next/link";
+// import { Link } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -24,7 +27,14 @@ const Topbar = ({ setShowsidebar, showsidebar }) => {
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="hidden sm:block ">
                   <div className="flex space-x-4 items-center  gap-1 lg:gap-0">
-                    <BiGridAlt onClick={()=>setShowsidebar(!showsidebar)} className={showsidebar ? " w-7 h-7 cursor-pointer hover:text-pr text-gray-600": " w-7 h-7 cursor-pointer text-pr border-2 border-pr"} />
+                    <BiGridAlt
+                      onClick={() => setShowsidebar(!showsidebar)}
+                      className={
+                        showsidebar
+                          ? " w-7 h-7 cursor-pointer hover:text-pr text-gray-600"
+                          : " w-7 h-7 cursor-pointer text-pr border-2 border-pr"
+                      }
+                    />
                     <h1 className="text-3xl text-gray-600 ">IT Dashboard</h1>
                   </div>
                 </div>
@@ -105,7 +115,6 @@ const Topbar = ({ setShowsidebar, showsidebar }) => {
                       <Menu.Item>
                         {({ active }) => (
                           <div
-                            
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               " px-4 flex items-center cursor-pointer gap-2 py-2 text-sm text-gray-700"
@@ -123,7 +132,14 @@ const Topbar = ({ setShowsidebar, showsidebar }) => {
             </div>
             <div className="relative flex lg:hidden items-center justify-around h-16">
               <div>
-                <BiGridAlt  onClick={()=>setShowsidebar(!showsidebar)} className={showsidebar ? " w-7 h-7 cursor-pointer hover:text-pr text-gray-600": " w-7 h-7 cursor-pointer text-pr border-2 border-pr"} />
+                <BiGridAlt
+                  onClick={() => setShowsidebar(!showsidebar)}
+                  className={
+                    showsidebar
+                      ? " w-7 h-7 cursor-pointer hover:text-pr text-gray-600"
+                      : " w-7 h-7 cursor-pointer text-pr border-2 border-pr"
+                  }
+                />
               </div>
               <div className="flex items-center gap-4">
                 <button className="px-3 py-2 bg-pr hover:bg-blue-700 rounded-md text-white text-sm">
@@ -207,14 +223,14 @@ const Topbar = ({ setShowsidebar, showsidebar }) => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-2 flex items-center gap-2">
-              <NavLink
+              <Link
                 exact
                 activeClassName="bg-hr tc"
                 to="/industry"
                 className="p-2 text-gray-400 border-2 text-xs border-yellow-100"
               >
                 Speciality
-              </NavLink>
+              </Link>
               <div className="flex items-center">
                 <input
                   placeholder="Type to search"

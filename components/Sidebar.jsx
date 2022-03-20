@@ -16,7 +16,7 @@ import {
 } from "react-icons/md";
 
 import { NavLink } from "react-router-dom";
-const Sidebar = ({setShowsidebar}) => {
+const Sidebar = ({ setShowsidebar }) => {
   const [contractshow, setContractshow] = useState(false);
   const [transhow, setTranshow] = useState(false);
   const [setting, setSetting] = useState(false);
@@ -38,19 +38,20 @@ const Sidebar = ({setShowsidebar}) => {
             activeClassName="hvr tc w-full"
             className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
             to="/"
-            onClick={()=>setShowsidebar(false)}
+            onClick={() => setShowsidebar(false)}
           >
             {" "}
             <FiHome className="w-5 h-5" /> Dashboard
           </NavLink>
         </div>
+        `
         <div className="w-full  flex items-center justify-center">
           <NavLink
             exact
             activeClassName="hvr tc w-full"
             className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
             to="/device"
-            onClick={()=>setShowsidebar(false)}
+            onClick={() => setShowsidebar(false)}
           >
             {" "}
             <FiBarChart2 className="w-5 h-5" /> Stats
@@ -59,9 +60,7 @@ const Sidebar = ({setShowsidebar}) => {
         <div className="w-full  flex items-center justify-center">
           <div
             onClick={() => setContractshow(!contractshow)}
-           
             className="py-2 flex cursor-pointer items-center justify-between px-2 text-gray-700  w-full"
-            
           >
             <div className="flex items-center gap-2">
               <BiGlobe className="w-5 h-5" /> Organization
@@ -78,7 +77,7 @@ const Sidebar = ({setShowsidebar}) => {
             <div className="w-full pl-1 flex items-center justify-center">
               <NavLink
                 exact
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/users"
@@ -90,7 +89,7 @@ const Sidebar = ({setShowsidebar}) => {
             <div className="w-full pl-1 flex items-center justify-center">
               <NavLink
                 exact
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/departments"
@@ -104,10 +103,7 @@ const Sidebar = ({setShowsidebar}) => {
         <div className="w-full flex items-center justify-center">
           <div
             onClick={() => setTranshow(!transhow)}
-           
-          
             className="py-2 flex items-center cursor-pointer justify-between px-2 text-gray-700  w-full"
-            
           >
             <div className="flex items-center gap-2">
               <FiTool className="w-5 h-5" /> Tools
@@ -127,7 +123,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/issues"
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 Issues
@@ -139,7 +135,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/knowledgebase"
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 Knowledgebase
@@ -151,7 +147,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/timesheets"
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 Timesheets
@@ -163,7 +159,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/it-services"
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 IT Services
@@ -175,7 +171,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/additonal-tools"
-                onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 [Additional Tools...]
@@ -184,7 +180,10 @@ const Sidebar = ({setShowsidebar}) => {
           </div>
         )}
         <div className="w-full  flex items-center justify-center">
-          <div onClick={()=>setSetting(!setting)} className="py-2 flex cursor-pointer items-center justify-between px-2 text-gray-700 hover:text-sr w-full">
+          <div
+            onClick={() => setSetting(!setting)}
+            className="py-2 flex cursor-pointer items-center justify-between px-2 text-gray-700 hover:text-sr w-full"
+          >
             <div className="flex items-center gap-2">
               <FiSettings className="w-5 h-5" /> Settings
             </div>{" "}
@@ -203,7 +202,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/userprofile"
-                 onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 User Profile
@@ -215,7 +214,7 @@ const Sidebar = ({setShowsidebar}) => {
                 activeClassName="hvr tc w-full"
                 className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full"
                 to="/organization"
-                 onClick={()=>setShowsidebar(false)}
+                onClick={() => setShowsidebar(false)}
               >
                 {" "}
                 Organization
@@ -224,7 +223,6 @@ const Sidebar = ({setShowsidebar}) => {
           </div>
         )}
       </div>
-     
     </div>
   );
 };
