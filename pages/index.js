@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <div className=" min-h-screen relative w-full bg-blue-50">
       <div className="flex flex-col gap-1 items-center w-full h-full justify-center">
-        <div classNae=" px-5 p-3 rounded-md bg-blue-200 mt-32">
+        <div className=" px-5 p-3 rounded-md bg-blue-200 mt-32">
           <h1 className="text-gray-800">Dashboard Login</h1>
         </div>
         <form className=" mt-24 border p-9 bg-white shadow-md">
