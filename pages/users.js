@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../components/table.module.css";
 import data from "../components/mock_data.json";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 
