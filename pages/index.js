@@ -1,198 +1,43 @@
-import Head from "next/head";
+import React from "react";
+import Footer from "../components/Footer";
 import Link from "next/link";
 
-export default function Home() {
+const Login = () => {
   return (
-    <div className="container">
-      <Head>
-        <title>IT Dashboard</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="title">Welcome to *insert name* IT Dashboard</h1>
-
-        <p className="description">
-          This dashboard is designed to facilitate all IT needs.
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <Link href="/Table">
-            <a className="card">
-              <h3>Users &rarr;</h3>
-              <p>See Users on the Dashboard</p>
-            </a>
-          </Link>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <Link href="/example1">
-            <a className="card">
-              <h3>View Example &rarr;</h3>
-              <p>Example page number one in the IT Dashboard</p>
-            </a>
-          </Link>
+    <div className=" min-h-screen relative w-full bg-blue-50">
+      <div className="flex flex-col gap-1 items-center w-full h-full justify-center">
+        <div className=" px-5 p-3 rounded-md bg-blue-200 mt-32">
+          <h1 className="text-gray-800">Dashboard Login</h1>
         </div>
-      </main>
-
-      <footer>Created by the Capstone Dream Team</footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+        <form className=" mt-24 border p-9 bg-white shadow-md">
+          <input
+            type="text"
+            placeholder="username"
+            className=" border px-2 py-2 mt-2 w-full rounded-sm"
+          />
+          <input
+            type="password"
+            placeholder="password"
+            className=" border px-2 py-2 mt-2 w-full rounded-sm"
+          />
+          <div className="flex items-center justify-between">
+            <Link href="dashboard">
+              <a className=" mt-3 px-3 py-2 rounded-sm text-sm hover:bg-blue-800 bg-pr text-white">
+                Login
+              </a>
+            </Link>
+            <button
+              type="submit"
+              className=" mt-3 px-3 py-2 rounded-sm text-sm hover:bg-pink-800 bg-pink-600 text-white"
+            >
+              Forget Password
+            </button>
+          </div>
+        </form>
+      </div>
+      <Footer />
     </div>
   );
-}
+};
+
+export default Login;

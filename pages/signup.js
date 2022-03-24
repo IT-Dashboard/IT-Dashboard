@@ -1,6 +1,6 @@
 import React from "react";
-import signup from "../image/signup.jpg";
-import { Link } from "react-router-dom";
+// import signup from "../image/signup.jpg";
+import Link from "next/link";
 const Signup = () => {
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-2 items-center min-h-screen bg-blue-50">
@@ -41,19 +41,19 @@ const Signup = () => {
             >
               Register
             </button>
-            
-              
-              <Link className="text-xs text-pr font-medium pt-2" to="/login">Already have an account?</Link>
-            
+
+            <Link className="text-xs text-pr font-medium pt-2" href="/login">
+              Already have an account?
+            </Link>
           </div>
         </form>
       </div>
       <div className=" h-full">
-        <img
+        {/* <img
           src={signup}
           style={{ height: "100%", width: "100%", objectFit: "100% 100%" }}
           alt=""
-        />
+        /> */}
       </div>
     </div>
   );

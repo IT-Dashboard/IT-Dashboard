@@ -24,7 +24,7 @@ const Sidebar = () => {
       </div>
       <div className="w-full  py-4 flex-col items-center gap-1">
         <div className="w-full  flex items-center justify-center">
-          <Link href="/">
+          <Link href="/dashboard">
             <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
               <FiHome className="w-5 h-5" /> Dashboard
             </a>
