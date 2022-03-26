@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
+import prisma from "../lib/prisma";
 
 export default function Page({ users }) {
   return (
@@ -77,8 +78,8 @@ Page.getLayout = function getLayout(page) {
 };
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/users");
-  const users = await res.json();
+  const users = await prisma.user.findMany();
+
   return {
     props: { users },
   };
