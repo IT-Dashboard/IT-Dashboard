@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import styles from "../components/table.module.css";
 import data from "../components/mock_data.json";
 import Layout from "../components/Layout";
 import { nanoid } from "nanoid";
 import Link from "next/link";
+
+import ReadOnlyRow from "../components/ReadOnlyRow";
+import EditingRow from "../components/EditingRow";
 
 export default function Page() {
   const [users, setUsers] = useState(data);
@@ -14,6 +17,17 @@ export default function Page() {
     phoneNumber: "",
     email: "",
   });
+
+  const [editFormData, setEditFormData] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    phoneNumber: "",
+    email: "",
+  })
+
+  const [editUserId, setEditUserId] = useState(null);
+
 
   const handleAddFormChange = (event) => {
     event.preventDefault();
@@ -26,6 +40,18 @@ export default function Page() {
 
     setAddFormData(newFormData);
   };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  }
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -42,6 +68,58 @@ export default function Page() {
     const newUsers = [...users, newUser];
     setUsers(newUsers);
   };
+
+  const handleEditFormSubmit = (event) =>{
+    event.preventDefault();
+
+    const editedUser = {
+      id: editUserId,
+      firstName: editFormData.firstName,
+      lastName: editFormData.lastName,
+      address: editFormData.address,
+      phoneNumber: editFormData.phoneNumber,
+      email: editFormData.email
+    }
+
+    const newUsers = [...users];
+
+    const index = users.findIndex((user)=> user.id === editUserId);
+
+    newUsers[index] = editedUser;
+
+    setUsers(newUsers);
+    setEditUserId(null);
+  };
+
+  const handleEditClick = (event, user)=> {
+    event.preventDefault();
+    setEditUserId(user.id);
+
+    const formValues = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+      email: user.email,
+    }
+
+    setEditFormData(formValues);
+  };
+
+  const handleCancelClick = () =>{
+    setEditUserId(null);
+  }
+
+  const handleDeleteClick = (userId) => {
+    const newUsers = [...users];
+
+    const index = users.findIndex((user)=> user.id === userId);
+
+    newUsers.splice(index, 1);
+
+    setUsers(newUsers);
+  }
+
 
   return (
     <div className="p-3 min-h-screen">
@@ -66,6 +144,7 @@ export default function Page() {
         <div className="overflow-x-auto">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
+            <form onSubmit={handleEditFormSubmit}>
               <table className="min-w-full">
                 <thead className="bg-white border-b bg-gray-50">
                   <tr>
@@ -99,33 +178,36 @@ export default function Page() {
                     >
                       Email
                     </th>
+                    <th
+                      scope="col"
+                      className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((user, index) => (
-                    <tr
-                      key={index}
-                      className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {user.firstName}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {user.lastName}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {user.address}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {user.phoneNumber}
-                      </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {user.email}
-                      </td>
-                    </tr>
+                  {users.map((user) => (
+                    <Fragment>
+
+                    {editUserId === user.id ? (
+                      <EditingRow 
+                        editFormData={editFormData} 
+                        handleEditFormChange={handleEditFormChange}
+                        handleCancelClick={handleCancelClick}/>
+                      ) : (
+                      <ReadOnlyRow 
+                        user={user} 
+                        handleEditClick={handleEditClick}
+                        handleDeleteClick={handleDeleteClick}
+                      />
+                      )}
+                    
+                    </Fragment>        
                   ))}
                 </tbody>
               </table>
+              </form>
             </div>
           </div>
         </div>
