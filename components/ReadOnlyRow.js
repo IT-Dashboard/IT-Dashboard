@@ -21,11 +21,11 @@ const ReadOnlyRow = ({ user, index, handleEditClick, handleDeleteClick }) =>{
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {user.email}
                       </td>
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <button type="button" onClick={(event)=> handleEditClick(event, user)}>
+                      <td class="inline-flex">
+                        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-l" type="button" onClick={(event)=> handleEditClick(event, user)}>
                         Edit 
                         </button>
-                        <button type="button" onClick={()=> handleDeleteClick(user.id)}>
+                        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r" type="button" onClick={()=> handleDeleteClick(user.id)}>
                         Delete
                         </button>
                       </td>
