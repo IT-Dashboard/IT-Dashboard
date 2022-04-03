@@ -39,9 +39,9 @@ const EditingRow = ({ editFormData, handleEditFormChange, handleCancelClick }) =
 					value={editFormData.email}
 					onChange={handleEditFormChange}></input>
 					</td>
-				<td>
-					<button type="submit">Save</button>
-					<button type="button" onClick={handleCancelClick}>Cancel</button>
+				<td class="inline-flex">
+					<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-l" type="submit">Save</button>
+					<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r" type="button" onClick={handleCancelClick}>Cancel</button>
 					</td>
 			</tr>
 		)
