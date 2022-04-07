@@ -57,15 +57,15 @@ const EditingRow = ({
 					onChange={handleEditFormChange}
 				></input>
 			</td>
-			<td class="inline-flex">
+			<td className="inline-flex">
 				<button
-					class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-l"
+					className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-l"
 					type="submit"
 				>
 					Save
 				</button>
 				<button
-					class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r"
+					className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r"
 					type="button"
 					onClick={handleCancelClick}
 				>
