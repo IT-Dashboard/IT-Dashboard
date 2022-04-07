@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "../components/table.module.css";
-import data from "../components/mock_data.json";
 import Layout from "../components/Layout";
 import { withSessionSsr } from "../lib/session";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 
-export default function Page() {
-  const [users, setUsers] = useState(data);
+export default function Page({ users: initialUsers }) {
+  const [users, setUsers] = useState(initialUsers);
   const [addFormData, setAddFormData] = useState({
     firstName: "",
     lastName: "",
@@ -213,9 +212,12 @@ export const getServerSideProps = withSessionSsr(
       };
     }
 
+    const users = await prisma.user.findMany();
+
     return {
       props: {
         user: req.session.user,
+        users,
       },
     };
   }
