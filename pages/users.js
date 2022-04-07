@@ -1,5 +1,4 @@
 import React, { useEffect, useState, Fragment } from "react";
-import styles from "../components/table.module.css";
 import Layout from "../components/Layout";
 import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditingRow from "../components/EditingRow";
