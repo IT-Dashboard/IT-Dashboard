@@ -15,6 +15,7 @@ const EditingRow = ({
 					name="firstName"
 					value={editFormData.firstName}
 					onChange={handleEditFormChange}
+					className="border px-2 py-2 mt-2 w-full rounded-sm"
 				></input>
 			</td>
 			<td>
@@ -25,6 +26,7 @@ const EditingRow = ({
 					name="lastName"
 					value={editFormData.lastName}
 					onChange={handleEditFormChange}
+					className="border px-2 py-2 mt-2 w-full rounded-sm"
 				></input>
 			</td>
 			<td>
@@ -35,6 +37,7 @@ const EditingRow = ({
 					name="address"
 					value={editFormData.address}
 					onChange={handleEditFormChange}
+					className="border px-2 py-2 mt-2 w-full rounded-sm"
 				></input>
 			</td>
 			<td>
@@ -45,6 +48,7 @@ const EditingRow = ({
 					name="phoneNumber"
 					value={editFormData.phoneNumber}
 					onChange={handleEditFormChange}
+					className="border px-2 py-2 mt-2 w-full rounded-sm"
 				></input>
 			</td>
 			<td>
@@ -55,6 +59,7 @@ const EditingRow = ({
 					name="email"
 					value={editFormData.email}
 					onChange={handleEditFormChange}
+					className="border px-2 py-2 mt-2 w-full rounded-sm"
 				></input>
 			</td>
 			<td className="inline-flex">
