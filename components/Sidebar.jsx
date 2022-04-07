@@ -7,19 +7,19 @@ import { MdOutlineArrowBackIos } from "react-icons/md";
 
 import Link from "next/link";
 
-const Sidebar = () => {
+const Sidebar = ({ user }) => {
   const [contractshow, setContractshow] = useState(false);
   const [transhow, setTranshow] = useState(false);
   const [setting, setSetting] = useState(false);
   return (
     <div
       style={{ top: "65px" }}
-      className="fixed  w-44 bg-white lg:w-60 p-2  z-30 border-r-2 min-h-screen"
+      className="fixed w-44 bg-white lg:w-60 p-2 z-30 border-r-2 min-h-screen"
     >
-      <div className="flex w-full items-center justify-center lg:justify-between h-14 border-b">
-        <CgProfile className="h-8 w-8 text-gray-600" />
-        <p className="text-xs text-gray-600 pl-3 hidden lg:block">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      <div className="flex w-full items-center h-12 border-b">
+        <CgProfile className="h-6 w-6 text-gray-600" />
+        <p className="text-sm text-gray-600 pl-3 hidden lg:block">
+          Welcome {(user && user.name) || "anonymous page"}!
         </p>
       </div>
       <div className="w-full  py-4 flex-col items-center gap-1">

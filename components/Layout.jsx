@@ -10,7 +10,12 @@ export default function Layout({ title, children }) {
       <Head>
         <title>{title} | IT Dashboard</title>
       </Head>
-      {showsidebar && <Sidebar setShowsidebar={setShowsidebar} />}
+      {showsidebar && (
+        <Sidebar
+          user={children.props.children.props.user}
+          setShowsidebar={setShowsidebar}
+        />
+      )}
       <div>
         <Topbar showsidebar={showsidebar} setShowsidebar={setShowsidebar} />
       </div>
