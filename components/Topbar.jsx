@@ -9,11 +9,17 @@ import { MdManageAccounts } from "react-icons/md";
 import { AiOutlineLogout } from "react-icons/ai";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
+import useUser from "../lib/useUser";
+import fetchJson from "../lib/fetchJson";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const Topbar = ({ setShowsidebar, showsidebar }) => {
+  const { user, mutateUser } = useUser();
+  const router = useRouter();
+
   return (
     <Disclosure
       as="nav"
@@ -107,15 +113,22 @@ const Topbar = ({ setShowsidebar, showsidebar }) => {
                   </Menu.Item>
                   <Menu.Item>
                     {({ active }) => (
-                      <Link href="/logout">
+                      <Link href="/api/logout">
                         <a
-                          className={classNames(
-                            active ? "bg-gray-100" : "",
-                            "hover:bg-gray-100 px-4 flex items-center cursor-pointer gap-2 py-2 text-sm text-gray-700"
-                          )}
+                          className="hover:bg-gray-100 px-4 flex items-center cursor-pointer gap-2 py-2 text-sm text-gray-700"
+                          onClick={async (e) => {
+                            e.preventDefault();
+                            mutateUser(
+                              await fetchJson("/api/logout", {
+                                method: "POST",
+                              }),
+                              false
+                            );
+                            router.push("/");
+                          }}
                         >
                           <AiOutlineLogout className="text-green-500 h-5 w-5" />
-                          LogOut
+                          Log Out
                         </a>
                       </Link>
                     )}
