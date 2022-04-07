@@ -18,6 +18,6 @@ async function loginRoute(req, res) {
     await req.session.save();
     res.json({ isLoggedIn: true });
   } else {
-    res.status(500).json({ message: "unauthorized" });
+    res.status(403).json({ message: "unauthorized" });
   }
 }
