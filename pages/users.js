@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../components/table.module.css";
 import data from "../components/mock_data.json";
 import Layout from "../components/Layout";
+import { withSessionSsr } from "../lib/session";
 import { nanoid } from "nanoid";
 import Link from "next/link";
 
@@ -201,3 +202,21 @@ export default function Page() {
 Page.getLayout = function getLayout(page) {
   return <Layout title="Users Page">{page}</Layout>;
 };
+
+export const getServerSideProps = withSessionSsr(
+  async function getServerSideProps({ req }) {
+    const user = req.session.user;
+
+    if (!user || user.admin !== true) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        user: req.session.user,
+      },
+    };
+  }
+);
