@@ -184,8 +184,8 @@ export default function Page({ users: initialUsers }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {users.map((user) => (
-                      <Fragment>
+                    {users.map((user, index) => (
+                      <Fragment key={index}>
                         {editUserId === user.id ? (
                           <EditingRow
                             editFormData={editFormData}
