@@ -3,6 +3,7 @@ import styles from "../components/table.module.css";
 import Layout from "../components/Layout";
 import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditingRow from "../components/EditingRow";
+import prisma from "../lib/prisma";
 import { withSessionSsr } from "../lib/session";
 import { nanoid } from "nanoid";
 import Link from "next/link";
