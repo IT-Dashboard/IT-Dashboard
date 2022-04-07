@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Dashboard from "../components/Dashboard";
-import Head from "next/head";
+import { withSessionSsr } from "../lib/session";
 
 export default function Page() {
   return <Dashboard />;
 }
 
 Page.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
+  return <Layout title="Dashboard">{page}</Layout>;
 };
+
+export const getServerSideProps = withSessionSsr(
+  async function getServerSideProps({ req }) {
+    const user = req.session.user;
+
+    if (!user) {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {
+        user: req.session.user,
+      },
+    };
+  }
+);
