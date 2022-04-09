@@ -1,8 +1,11 @@
 import React from "react";
 
-//ReadOnlyRow component
-//data passed in as props
-//component renders details based on user object which is passed in
+{/* 
+	ReadOnlyRow component
+	data passed in as props
+	component renders details based on user object which is passed in
+*/}
+
 const ReadOnlyRow = ({ user, index, handleEditClick, handleDeleteClick }) => {
   return (
     <tr
@@ -36,7 +39,7 @@ const ReadOnlyRow = ({ user, index, handleEditClick, handleDeleteClick }) => {
         >
           Edit
         </button>
-        
+
         {/* delete button */}
         <button
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r"
