@@ -1,11 +1,15 @@
 import React from "react";
 
+//EditRow component
+//holds the inputs that lets users update values in a given row
 const EditingRow = ({
 	editFormData,
 	handleEditFormChange,
 	handleCancelClick,
 }) => {
 	return (
+		//everytime there is an input, the input value is stored in state
+		//which is then used to repopulate the edit row
 		<tr>
 			<td>
 				<input
@@ -63,12 +67,14 @@ const EditingRow = ({
 				></input>
 			</td>
 			<td className="inline-flex">
+				//submit button to submit new edit
 				<button
 					className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-l"
 					type="submit"
 				>
 					Save
 				</button>
+				//cancel button that triggers handleCancelClick
 				<button
 					className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r"
 					type="button"
