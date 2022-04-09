@@ -1,20 +1,20 @@
 import React from "react";
 
-{/* 
+/* 
 	EditRow component
 	holds the inputs that lets users update values in a given row 
-*/}
+*/
 const EditingRow = ({
 	editFormData,
 	handleEditFormChange,
 	handleCancelClick,
 }) => {
 	return (
-		{/* 
-		everytime there is an input, the input value is stored in state
-		which is then used to repopulate the edit row  
-		*/}
 		<tr>
+			{/* 
+				everytime there is an input, the input value is stored in state
+				which is then used to repopulate the edit row  
+			*/}
 			<td>
 				<input
 					type="text"
