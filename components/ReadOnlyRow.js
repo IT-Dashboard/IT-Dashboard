@@ -26,8 +26,8 @@ const ReadOnlyRow = ({ user, index, handleEditClick, handleDeleteClick }) => {
       </td>
       <td className="inline-flex">
       	{/* 
-		//calls handleEditClick function to set EditUserId
-		// when edit button is clicked, it stores the id of user, which is used to show whether to show EditingRow or ReadOnlyRow component
+		calls handleEditClick function to set EditUserId
+		when edit button is clicked, it stores the id of user, which is used to show whether to show EditingRow or ReadOnlyRow component
 		*/}
         <button
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-l"
@@ -37,7 +37,7 @@ const ReadOnlyRow = ({ user, index, handleEditClick, handleDeleteClick }) => {
           Edit
         </button>
         
-        //delete button
+        {/* delete button */}
         <button
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-normal text-sm py-2 px-3 rounded-r"
           type="button"

@@ -182,11 +182,12 @@ export default function Page({ users: initialUsers }) {
           Delete User
         </div>
       </div>
+
       <div className="flex flex-col">
         <div className="overflow-x-auto">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
-            //editing row component needs to be in a form tag but <form> cannot appear as a child of <tbody>
+            //editing row component needs to be in a form tag but <form> cannot appear as a child of tbody
             //to get around this problem, the whole table is wrapped in form tag
             //works due to only having one set of form inputs displayed at any given time, preventing any form duplication problems
             //implements the handleEditFormSubmit to submit changed made to editFormData
@@ -337,7 +338,7 @@ export default function Page({ users: initialUsers }) {
         />
         <div className="flex items-center justify-between">
 
-        //submission button for adding user form
+          //submission button for adding user form
           <button
             type="submit"
             className=" mt-3 px-3 py-2 rounded-sm text-sm hover:bg-blue-800 bg-pr text-white"
