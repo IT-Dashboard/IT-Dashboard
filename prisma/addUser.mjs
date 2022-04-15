@@ -1,4 +1,6 @@
-const { PrismaClient } = require("@prisma/client");
+import prismaPackage from "@prisma/client";
+const { PrismaClient } = prismaPackage;
+import { generateHash } from "../lib/encrypt.mjs";
 
 const prisma = new PrismaClient();
 
@@ -12,6 +14,7 @@ async function main() {
         address: "Somewhere, Georgia",
         phoneNumber: "123-456-7890",
         email: "khogans1@students.kennesaw.edu",
+        password: await generateHash(""),
       },
       {
         id: 2,
@@ -20,6 +23,7 @@ async function main() {
         address: "Here, Georgia",
         phoneNumber: "011-211-7516",
         email: "jhooker3@students.kennesaw.edu",
+        password: await generateHash(""),
       },
       {
         id: 3,
@@ -28,6 +32,7 @@ async function main() {
         address: "There, Georgia",
         phoneNumber: "788-962-7516",
         email: "skharel@students.kennesaw.edu",
+        password: await generateHash(""),
       },
       {
         id: 4,
@@ -36,6 +41,7 @@ async function main() {
         address: "Someplace, Georgia",
         phoneNumber: "011-962-111",
         email: "skim148@students.kennesaw.edu",
+        password: await generateHash(""),
       },
       {
         id: 5,
@@ -44,6 +50,7 @@ async function main() {
         address: "Overthere, Georgia",
         phoneNumber: "3231-962-7516",
         email: "rraheja@students.kennesaw.edu",
+        password: await generateHash(""),
       },
     ],
   });
