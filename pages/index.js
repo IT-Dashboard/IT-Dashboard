@@ -90,12 +90,14 @@ const Login = () => {
             name="email"
             placeholder="email"
             className=" border px-2 py-2 mt-2 w-full rounded-sm"
+            required="required"
           />
           <input
             type="password"
             name="password"
             placeholder="password"
             className=" border px-2 py-2 mt-2 w-full rounded-sm"
+            required="required"
           />
           <div className="flex items-center justify-between">
             <button
