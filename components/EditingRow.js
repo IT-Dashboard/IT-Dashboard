@@ -10,7 +10,7 @@ const EditingRow = ({
 	handleCancelClick,
 }) => {
 	return (
-		<tr>
+		<tr className="bg-gray-100 border-b">
 			{/* 
 				everytime there is an input, the input value is stored in state
 				which is then used to repopulate the edit row  
@@ -66,6 +66,16 @@ const EditingRow = ({
 					placeholder="Please enter your email..."
 					name="email"
 					value={editFormData.email}
+					onChange={handleEditFormChange}
+					className="border px-2 py-2 mt-2 w-full rounded-sm"
+				></input>
+
+				<input
+					type="text"
+					placeholder="Enter new password or leave blank to continue..."
+					name="password"
+					autoComplete="new-password"
+					value={editFormData.password}
 					onChange={handleEditFormChange}
 					className="border px-2 py-2 mt-2 w-full rounded-sm"
 				></input>
