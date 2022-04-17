@@ -250,22 +250,8 @@ export default function Page({ users: initialUsers }) {
   return (
     <div>
       <h1 className="text-gray-600  mt-3 text-2xl font-medium w-full text-center">
-        Hello User
+        Welcome to the Users Page!
       </h1>
-      <h1 className="text-gray-600  mt-3 text-2xl font-medium w-full text-center">
-        Welcome To User Page!
-      </h1>
-      <div className="mt-3 w-full grid grid-cols-1 lg:grid-cols-3">
-        <div className=" cursor-pointer bg-purple-600 hover:bg-purple-800 border-r-2 border-white text-white py-2 flex items-center justify-center">
-          Add User
-        </div>
-        <div className=" cursor-pointer bg-pink-600 hover:bg-pink-800 border-r-2 border-white text-white flex items-center justify-center">
-          Edit User
-        </div>
-        <div className=" cursor-pointer bg-red-600 hover:bg-red-800  text-white flex items-center justify-center">
-          Delete User
-        </div>
-      </div>
 
       <div className="flex flex-col">
         <div className="overflow-x-auto">
