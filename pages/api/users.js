@@ -116,31 +116,3 @@ async function userRoute({ query: { id, name }, body, method, session }, res) {
     });
   }
 }
-
-// async function userRoute(req, res) {
-//   if (req.session.user) {
-//     // in a real world application you might read the user id from the session and then do a database request
-//     // to get more information on the user if needed
-//     res.json({
-//       ...req.session.user,
-//       isLoggedIn: true,
-//     });
-//   } else {
-//     res.json({
-//       isLoggedIn: false,
-//     });
-//   }
-// }
-
-// import prisma from "../../lib/prisma";
-//
-// export default async function handler(req, res) {
-//   // let result = { env: process.env.DATABASE_URL };
-//
-//   const result = await prisma.user.findMany();
-//   const result = await prisma.user.create();
-//   const result = await prisma.user.delete();
-//   const result = await prisma.user.update();
-//
-//   res.status(200).json(result);
-// }
