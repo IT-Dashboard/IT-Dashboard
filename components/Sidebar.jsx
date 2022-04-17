@@ -31,7 +31,7 @@ const Sidebar = ({ user }) => {
           </Link>
         </div>
         <div className="w-full  flex items-center justify-center">
-          <Link href="/device">
+          <Link href="/tools">
             <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
               <FiBarChart2 className="w-5 h-5" /> Stats
             </a>
@@ -88,28 +88,28 @@ const Sidebar = ({ user }) => {
         {transhow && (
           <div className="w-full flex items-center flex-col text-sm">
             <div className="w-full pl-1 flex items-center justify-center">
-              <Link href="/issues">
+              <Link href="/tools">
                 <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
                   Issues
                 </a>
               </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <Link href="/knowledgebase">
+              <Link href="/tools">
                 <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
                   Knowledgebase
                 </a>
               </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <Link href="/timesheets">
+              <Link href="/tools">
                 <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
                   Timesheets
                 </a>
               </Link>
             </div>
             <div className="w-full pl-1 flex items-center justify-center">
-              <Link href="/it-services">
+              <Link href="/tools">
                 <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
                   IT Services
                 </a>
@@ -135,7 +135,7 @@ const Sidebar = ({ user }) => {
         {setting && (
           <div className="w-full flex items-center flex-col text-sm">
             <div className="w-full pl-1 flex items-center justify-center">
-              <Link href="/user/profile">
+              <Link href="/user-profile">
                 <a className="py-2 flex items-center gap-2 px-2 text-gray-700 hover:text-sr w-full">
                   User Profile
                 </a>
