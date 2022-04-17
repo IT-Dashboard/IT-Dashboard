@@ -3,6 +3,7 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import useUser from "../lib/useUser";
 import fetchJson, { FetchError } from "../lib/fetchJson";
+import Head from "next/head";
 
 const Login = () => {
   const { mutateUser } = useUser({
@@ -47,9 +48,12 @@ const Login = () => {
 
   return (
     <div className=" min-h-screen relative w-full bg-blue-50">
+      <Head>
+        <title>IT Dashboard Login</title>
+      </Head>
       <div className="flex flex-col gap-1 items-center w-full h-full justify-center">
         <div className=" px-5 p-3 rounded-md bg-blue-200 mt-32">
-          <h1 className="text-gray-800">Dashboard Login</h1>
+          <h1 className="text-gray-800">IT Dashboard Login</h1>
           <h3></h3>
         </div>
         <form
