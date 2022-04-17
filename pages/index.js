@@ -30,7 +30,6 @@ const Login = () => {
           body: JSON.stringify(body),
         })
       );
-      setIsLoading(false);
     } catch (error) {
       if (error instanceof FetchError) {
         setErrorMsg(error.data.message);
