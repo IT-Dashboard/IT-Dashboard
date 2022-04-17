@@ -4,11 +4,14 @@ import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditingRow from "../components/EditingRow";
 import prisma from "../lib/prisma";
 import { withSessionSsr } from "../lib/session";
+import fetchJson, { FetchError } from "../lib/fetchJson";
 // nanoid generates id for the user
 import { nanoid } from "nanoid";
 import Link from "next/link";
 
 export default function Page({ users: initialUsers }) {
+  const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   // initialize user data from database to use for table
   const [users, setUsers] = useState(initialUsers);
 
@@ -19,6 +22,7 @@ export default function Page({ users: initialUsers }) {
     address: "",
     phoneNumber: "",
     email: "",
+    password: "",
   });
 
   // create state object to hold form data while editing a row
@@ -28,6 +32,7 @@ export default function Page({ users: initialUsers }) {
     address: "",
     phoneNumber: "",
     email: "",
+    password: "",
   });
 
   // if editUserId is null, the user is not editing any rows, hiding EditingRows component
@@ -76,29 +81,59 @@ export default function Page({ users: initialUsers }) {
     setEditFormData(newFormData);
   };
   // submits form of new user data
-  const handleAddFormSubmit = (event) => {
+  const handleAddFormSubmit = async (event) => {
     event.preventDefault();
+    setErrorMsg("");
+    setIsLoading(true);
 
     // takes entered data in form(stored in state object) and create a new object
     const newUser = {
       // id used to determine which user is being changed or updated
-      id: nanoid(),
+      // id: nanoid(),
       firstName: addFormData.firstName,
       lastName: addFormData.lastName,
       address: addFormData.address,
       phoneNumber: addFormData.phoneNumber,
       email: addFormData.email,
+      password: addFormData.password,
     };
+    try {
+      const storedUser = await fetchJson("/api/users", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newUser),
+      });
 
-    // create new user array to avoid changing state
-    const newUsers = [...users, newUser];
-    // pass in new array
-    setUsers(newUsers);
+      // create new user array to avoid changing state
+      const newUsers = [...users, storedUser];
+      // pass in new array
+      setUsers(newUsers);
+      // reset form values
+      setAddFormData({
+        firstName: "",
+        lastName: "",
+        address: "",
+        phoneNumber: "",
+        email: "",
+        password: "",
+      });
+      setIsLoading(false);
+    } catch (error) {
+      if (error instanceof FetchError) {
+        setErrorMsg(error.data.message);
+        console.log(error.data);
+      } else {
+        console.error("An unexpected error happened:", error);
+      }
+      setIsLoading(false);
+    }
   };
 
   // submits form of edited user data
-  const handleEditFormSubmit = (event) => {
+  const handleEditFormSubmit = async (event) => {
     event.preventDefault();
+    setErrorMsg("");
+    setIsLoading(true);
 
     // new object created based on the inputs exiting in the editFormData
     const editedUser = {
@@ -108,25 +143,44 @@ export default function Page({ users: initialUsers }) {
       address: editFormData.address,
       phoneNumber: editFormData.phoneNumber,
       email: editFormData.email,
+      password: editFormData.password,
     };
 
-    // create new user array to avoid mutating state
-    const newUsers = [...users];
+    try {
+      const storedUser = await fetchJson("/api/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editedUser),
+      });
 
-    /*
+      // create new user array to avoid mutating state
+      const newUsers = [...users];
+
+      /*
       replace user object with new user object
       to do this get index of row that is being edited
-    */
+      */
 
-    const index = users.findIndex((user) => user.id === editUserId);
+      const index = users.findIndex((user) => user.id === editUserId);
 
-    // update array at the given index
-    newUsers[index] = editedUser;
+      // update array at the given index
+      newUsers[index] = editedUser;
 
-    // set new array into state
-    setUsers(newUsers);
+      // set new array into state
+      setUsers(newUsers);
+    } catch (error) {
+      if (error instanceof FetchError) {
+        setErrorMsg(error.data.message);
+        console.log(error.data);
+      } else {
+        console.error("An unexpected error happened:", error);
+      }
+      setIsLoading(false);
+    }
+
     // set EditUserId to null to hide EditingRow component
     setEditUserId(null);
+    setIsLoading(false);
   };
 
   /*
@@ -162,21 +216,39 @@ export default function Page({ users: initialUsers }) {
     Remove row from state, and rerender component with new array with the row removed
     userId used to find index of the user to remove that specific row
   */
-  const handleDeleteClick = (userId) => {
-    // create new array from current user to stop state from changing
-    const newUsers = [...users];
+  const handleDeleteClick = async (userId) => {
+    setErrorMsg("");
+    setIsLoading(true);
+    try {
+      const storedUser = await fetchJson("/api/users", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: userId }),
+      });
 
-    // get index of user
-    const index = users.findIndex((user) => user.id === userId);
+      // create new array from current user to stop state from changing
+      const newUsers = [...users];
 
-    // splice method use to remove user object at the given index of an array
-    newUsers.splice(index, 1);
-    // save into state and pass in new array
-    setUsers(newUsers);
+      // get index of user
+      const index = users.findIndex((user) => user.id === userId);
+
+      // splice method use to remove user object at the given index of an array
+      newUsers.splice(index, 1);
+      // save into state and pass in new array
+      setUsers(newUsers);
+    } catch (error) {
+      if (error instanceof FetchError) {
+        setErrorMsg(error.data.message);
+        console.log(error.data);
+      } else {
+        console.error("An unexpected error happened:", error);
+      }
+    }
+    setIsLoading(false);
   };
 
   return (
-    <div className="p-3 min-h-screen">
+    <div>
       <h1 className="text-gray-600  mt-3 text-2xl font-medium w-full text-center">
         Hello User
       </h1>
@@ -207,6 +279,34 @@ export default function Page({ users: initialUsers }) {
             */}
 
               <form onSubmit={handleEditFormSubmit}>
+                {errorMsg && (
+                  <div
+                    className="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3"
+                    role="alert"
+                  >
+                    {errorMsg}
+                  </div>
+                )}
+                {isLoading && (
+                  <div className="flex items-center">
+                    <svg
+                      role="status"
+                      className="place-self-center inline mx-auto w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-200"
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
+                    </svg>
+                  </div>
+                )}
                 {/* start of table */}
                 <table className="min-w-full">
                   {/* column headings */}
@@ -317,6 +417,7 @@ export default function Page({ users: initialUsers }) {
             placeholder="First name..."
             className=" border px-2 py-2 w-full rounded-sm"
             onChange={handleAddFormChange}
+            value={addFormData.firstName}
           />
           <input
             type="text"
@@ -325,6 +426,7 @@ export default function Page({ users: initialUsers }) {
             placeholder="Last name..."
             className=" border px-2 py-2 w-full rounded-sm"
             onChange={handleAddFormChange}
+            value={addFormData.lastName}
           />
         </div>
         <input
@@ -334,6 +436,7 @@ export default function Page({ users: initialUsers }) {
           placeholder="Address..."
           className=" border px-2 py-2 mt-2 w-full rounded-sm"
           onChange={handleAddFormChange}
+          value={addFormData.address}
         />
 
         <input
@@ -343,6 +446,7 @@ export default function Page({ users: initialUsers }) {
           placeholder="Phone number..."
           className=" border px-2 py-2 mt-2 w-full rounded-sm"
           onChange={handleAddFormChange}
+          value={addFormData.phoneNumber}
         />
         <input
           type="text"
@@ -351,13 +455,17 @@ export default function Page({ users: initialUsers }) {
           placeholder="Email..."
           className=" border px-2 py-2 mt-2 w-full rounded-sm"
           onChange={handleAddFormChange}
+          value={addFormData.email}
         />
         <input
           type="password"
           name="password"
+          autoComplete="new-password"
           placeholder="New Password..."
           required="required"
           className=" border px-2 py-2 mt-2 w-full rounded-sm"
+          onChange={handleAddFormChange}
+          value={addFormData.password}
         />
         <div className="flex items-center justify-between">
           {/* submission button for adding user form */}
@@ -386,8 +494,20 @@ export const getServerSideProps = withSessionSsr(
         notFound: true,
       };
     }
-
-    const users = await prisma.user.findMany();
+    const userFields = {
+      id: true,
+      firstName: true,
+      lastName: true,
+      address: true,
+      phoneNumber: true,
+      email: true,
+    };
+    const users = await prisma.user.findMany({
+      select: userFields,
+      orderBy: {
+        id: "asc",
+      },
+    });
 
     return {
       props: {
