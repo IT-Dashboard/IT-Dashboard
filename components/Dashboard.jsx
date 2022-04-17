@@ -64,8 +64,8 @@ const Dashboard = () => {
     },
   ];
   return (
-    <div className="p-3 min-h-screen">
-      <h1 className="text-gray-600  mt-16 text-2xl font-medium">
+    <div>
+      <h1 className="text-gray-600  text-2xl font-medium">
         Welcome To Your IT Dashboard
       </h1>
       <div className="w-full mt-6 border rounded-md flex-col lg:flex-row gap-2 flex items-center justify-between">

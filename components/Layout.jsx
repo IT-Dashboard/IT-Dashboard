@@ -19,7 +19,9 @@ export default function Layout({ title, children }) {
       <div>
         <Topbar showsidebar={showsidebar} setShowsidebar={setShowsidebar} />
       </div>
-      <div className={showsidebar ? " ml-0 lg:ml-60" : "ml-0"}>{children}</div>
+      <div className={showsidebar ? "mt-20 ml-4 lg:ml-64" : "mt-20 ml-4"}>
+        {children}
+      </div>
     </div>
   );
 }
